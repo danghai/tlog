@@ -141,4 +141,36 @@ extern void tlog_errs_pushf(struct tlog_errs **perrs, const char *fmt, ...)
  */
 extern int tlog_errs_print(FILE *stream, const struct tlog_errs *errs);
 
+#define TLOG_ERRS_RAISES(_perrs, _msg) \
+    do {                                       \
+        struct tlog_errs **__perrs = (_perrs); \
+        tlog_errs_pushs(__perrs, _msg);        \
+        goto cleanup;                          \
+    } while (0)
+
+#define TLOG_ERRS_RAISECS(_grc, _perrs, _msg) \
+    do {                                        \
+        struct tlog_errs **__perrs = (_perrs);  \
+        grc = _grc;                             \
+        tlog_errs_pushc(__perrs, grc);          \
+        tlog_errs_pushs(__perrs, _msg);         \
+        goto cleanup;                           \
+    } while (0)
+
+#define TLOG_ERRS_RAISEF(_perrs, _msg, _args...) \
+    do {                                           \
+        struct tlog_errs **__perrs = (_perrs);     \
+        tlog_errs_pushf(__perrs, _msg, ##_args);   \
+        goto cleanup;                              \
+    } while (0)
+
+#define TLOG_ERRS_RAISECF(_grc, _perrs, _msg, _args...) \
+    do {                                                  \
+        struct tlog_errs **__perrs = (_perrs);            \
+        grc = _grc;                                       \
+        tlog_errs_pushc(__perrs, grc);                    \
+        tlog_errs_pushf(__perrs, _msg, ##_args);          \
+        goto cleanup;                                     \
+    } while (0)
+    
 #endif /* _TLOG_ERRS_H */
