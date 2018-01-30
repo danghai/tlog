@@ -1111,21 +1111,20 @@ tests, as it will make it difficult to keep them in sync with the code.
 
 Shall we make subdirs under top directories instead? E.g.
 
-    include
-        tlog
-        tltest
-    lib
-        tlog
-        tltest
-    src
-        tlog
-        tltest
-    m4
-        autotools
-        tlog
-    man
-        tlog
-    doc
-        tlog
+.                   <- Core tlog + README + CONFIGURE etc
+├── doc             <- Documentation.
+├── include         <- API headers in C language (*.h).
+│   ├── tlog
+│   ├── tltest
+├── lib             <- Library API in C language (*.c).
+│   ├── tlog
+│   ├── tltest
+├── src             <- Core handling tlog.
+│   ├── tlog
+│   ├── tltest
+├── m4              <- Unix macro processor.
+│   ├── autotools
+│   ├── tlog
+└── man             <- Man page tlog.
 
 Let's try.
