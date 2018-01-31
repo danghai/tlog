@@ -463,3 +463,6 @@ output better. Further development will be addressing these.
 [elasticsearch]: https://www.elastic.co/products/elasticsearch
 [releases]: https://github.com/Scribery/tlog/releases
 [query_string_syntax]: https://www.elastic.co/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#query-string-syntax
+
+### Contributing
+Please read the [Contributing Guidelines](CONTRIBUTING.md) for more details on the process for submitting pull requests.
